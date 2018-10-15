@@ -6,40 +6,46 @@
 	</head>
 {% endblock %}
 
-	<body class="{{body_class}}" data-template="base.twig">
-		<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
-		<header class="header" >
-			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						{% include "menu.twig" with {'menu': menu.get_items} %}
-					</nav><!-- #nav -->
-				</div>
+	<body class="{{ body_class }}" data-template="base.twig">
+		{% do action('storefront_before_site') %}
+
+		<div id="page" class="hfeed site">
+			{% do action('storefront_before_header') %}
+
+			<header id="masthead" class="site-header" role="banner" style="{{ function('storefront_header_styles') }}">
+
+				{% do action('storefront_header') %}
+
+			</header><!-- #masthead -->
+
+			{% do action( 'storefront_before_content' ) %}
+
+			<div id="content" class="site-content" tabindex="-1">
+				<div class="col-full">
+
+					{% do action( 'storefront_content_top' ) %}
+
+					{% block content %}
+						Sorry, no content
+					{% endblock %}
+
+					{% do action( 'storefront_sidebar' ) %}
+
+				</div><!-- .col-full -->
+			</div><!-- #content -->
+
+			{% do action( 'storefront_before_footer' ) %}
+
+			{% block footer %}
+				<footer id="colophon" class="site-footer" role="contentinfo">
+					{% include 'footer.twig' %}
+				</footer><!-- #colophon -->
 			{% endblock %}
-		</header>
 
-		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
-			<div class="wrapper {{sidebar_class}}">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
-		</section>
+			{% do action( 'storefront_after_footer' ) %}
 
-		{% block footer %}
-			<footer id="footer">
-				{% include 'footer.twig' %}
-			</footer>
-			{{ function('wp_footer') }}
-		{% endblock %}
+		</div><!-- #page -->
+
+		{{ function('wp_footer') }}
 	</body>
 </html>

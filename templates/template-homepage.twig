@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+
+      {% do action( 'homepage' ) %}
+
+    </main><!-- #main -->
+  </div><!-- #primary -->
+{% endblock %}
