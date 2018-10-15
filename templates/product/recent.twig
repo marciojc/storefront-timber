@@ -1,0 +1,16 @@
+<section
+  class="storefront-product-section storefront-recent-products"
+  aria-label="{{ _e( 'Recent Products', 'storefront' ) }}"
+>
+
+  {% do action( 'storefront_homepage_before_recent_products' ) %}
+
+  <h2 class="section-title">{{ title }}</h2>
+
+  {% do action( 'storefront_homepage_after_recent_products_title' ) %}
+
+  {{ content }}
+
+  {% do action( 'storefront_homepage_after_recent_products' ) %}
+
+</section>

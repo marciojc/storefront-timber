@@ -1,0 +1,16 @@
+<section
+  class="storefront-product-section storefront-product-categories"
+  aria-label="{{ _e('Product Categories', 'storefront') }}"
+>
+
+  {% do action( 'storefront_homepage_before_product_categories' ) %}
+
+  <h2 class="section-title">{{ title }}</h2>
+
+  {% do action( 'storefront_homepage_after_product_categories_title' ) %}
+
+  {{ content }}
+
+  {% do action( 'storefront_homepage_after_product_categories' ) %}
+
+</section>

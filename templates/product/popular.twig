@@ -1,0 +1,15 @@
+<section
+class="storefront-product-section storefront-popular-products"
+aria-label="{{ _e( 'Popular Products', 'storefront' ) }}">
+
+  {% do action( 'storefront_homepage_before_popular_products' ) %}
+
+  <h2 class="section-title">{{ title }}</h2>
+
+  {% do action( 'storefront_homepage_after_popular_products_title' ) %}
+
+  {{ content }}
+
+  {% do action( 'storefront_homepage_after_popular_products' ) %}
+
+</section>
