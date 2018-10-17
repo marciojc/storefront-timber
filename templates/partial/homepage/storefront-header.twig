@@ -1,0 +1,13 @@
+<div class="col-full">
+  <a class="skip-link screen-reader-text" href="#site-navigation">{{ _e( 'Skip to navigation', 'storefront' ) }}</a>
+  <a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content', 'storefront' ) }}</a>
+  <div class="site-branding">
+    {{ function('storefront_site_title_or_logo') }}
+  </div>
+  {% do action('storefront_header_top') %}
+</div>
+<div class="storefront-primary-navigation">
+  <div class="col-full">
+    {% do action('storefront_header_bottom') %}
+  </div>
+</div>

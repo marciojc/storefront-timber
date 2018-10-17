@@ -18,6 +18,12 @@
 
 			</header><!-- #masthead -->
 
+			<header id="masthead" class="site-header" role="banner" style="{{ function('storefront_header_styles') }}">
+
+				{% include 'partial/homepage/storefront-header.twig' %}
+
+			</header><!-- #masthead -->
+
 			{% do action( 'storefront_before_content' ) %}
 
 			<div id="content" class="site-content" tabindex="-1">
