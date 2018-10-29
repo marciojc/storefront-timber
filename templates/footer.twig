@@ -1,3 +1,13 @@
 <div class="col-full">
   {% do action( 'storefront_footer' ) %}
+  <div class="site-info">
+    &copy; {{  site.name }} {{ now|date('Y') }}
+    {% if true|apply_filters('storefront_privacy_policy_link') %}
+      <br />
+      {% if true|apply_filters('storefront_privacy_policy_link') and function('function_exists', 'the_privacy_policy_link') %}
+        {{ function('the_privacy_policy_link', '', '<span role="separator" aria-hidden="true"></span>' ) }}
+      {% endif %}
+      <a href="https://woocommerce.com" target="_blank" title="{{ __('WooCommerce - The Best eCommerce Platform for WordPress', 'storefront') }}" rel="author">{{ __('Built with Storefront &amp; WooCommerce', 'storefront')|e('esc_html') }}</a>
+    {% endif %}
+  </div><!-- .site-info -->
 </div><!-- .col-full -->
