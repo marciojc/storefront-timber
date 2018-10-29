@@ -1,0 +1,14 @@
+{{ fn('timber_set_product', product) }}
+
+<li {{ function('wc_product_class') }}>
+  <a href="{{ product.link }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+    {% include 'woocommerce/loop/sale-flash.twig' %}
+    {% do action( 'woocommerce_before_shop_loop_item_title' ) %}
+  </a>
+  {% do action( 'woocommerce_before_shop_loop_item' ) %}
+
+  <h2 class="woocommerce-loop-product__title">{{ product.title }}</h2>
+
+  {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
+  {% do action( 'woocommerce_after_shop_loop_item' ) %}
+</li>

@@ -38,7 +38,6 @@ add_action( 'storefront_header_bottom', 'storefront_primary_navigation',        
  * @see  storefront_credit()
  */
 add_action( 'storefront_footer', 'storefront_footer_widgets', 10 );
-add_action( 'storefront_footer', 'storefront_credit',         20 );
 
 /**
  * Homepage
