@@ -6,4 +6,6 @@
  * @subpackage  Timber
  */
 
-Timber::render( array( 'sidebar.twig' ), $data );
+$context = array();
+$context['dynamic_sidebar'] = Timber::get_widgets('sidebar-1');
+Timber::render( array( 'sidebar.twig' ), $context);
