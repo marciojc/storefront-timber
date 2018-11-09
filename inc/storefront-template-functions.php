@@ -789,12 +789,11 @@ if ( ! function_exists( 'storefront_homepage_content' ) ) {
 	 * @return  void
 	 */
 	function storefront_homepage_content() {
-		while ( have_posts() ) {
-			the_post();
+		global $posts;
 
-			get_template_part( 'content', 'homepage' );
-
-		} // end of the loop.
+		foreach ($posts as $post) {
+			Timber::render('content/homepage.twig', [ 'post' => $post ]);
+		}
 	}
 }
 
