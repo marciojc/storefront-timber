@@ -20,6 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+$context = Timber::get_context();
+$posts = Timber::get_posts();
+$context['products'] = $posts;
+Timber::render( array( 'woocommerce/single-product.twig' ), $context );
+
+
 get_header( 'shop' ); ?>
 
 	<?php

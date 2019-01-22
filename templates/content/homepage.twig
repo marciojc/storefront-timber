@@ -1,6 +1,6 @@
 <div
     id="post-{{ post.id }}"
-    {{ fn('post_class') }}
+    class="{{ post.class }}"
     style="{{ function( 'storefront_homepage_content_styles' ) }}"
     data-featured-image="{{ function('get_the_post_thumbnail_url', post.id, 'thumbnail') }}"
 >
