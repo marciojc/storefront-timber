@@ -1,14 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-			<section class="article-content">
-				<h1 class="article-h1">{{post.title}}</h1>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-		</article>
-	</div><!-- /content-wrapper -->
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+			{% for post in posts %}
+				{% do action('storefront_page_before') %}
+
+			  {% include 'content/page.twig' with { post: post } only %}
+
+				{% do action('storefront_page_after') %}
+			{% endfor %}
+		</main><!-- #main -->
+	</div><!-- #primary -->
 {% endblock %}
