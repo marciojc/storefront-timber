@@ -1,11 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<h2>{{ foo }}</h2>
-	<p>{{ qux }}</p>
-	{% for post in posts %}
-		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-	{% endfor %}
-	
-	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+
+      {% if posts %}
+        {% include 'loop.twig' with { posts: posts } only %}
+      {% else %}
+        {% include 'content/none.twig' %}
+      {% endif %}
+
+    </main><!-- #main -->
+  </div><!-- #primary -->
 {% endblock %}
