@@ -1,7 +1,7 @@
 {% do action('storefront_loop_before') %}
 
 {% for post in posts %}
-  {% include 'content/default.twig' with { post: post } only %}
+  {% include ['content/' ~ post.format ~ '.twig', 'content/default.twig'] with { post: post } only %}
 {% endfor %}
 
 {% do action('storefront_loop_after') %}

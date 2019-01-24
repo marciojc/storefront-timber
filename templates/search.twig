@@ -2,12 +2,19 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  {# see `base.twig:27` for where this block's content will be inserted #}
-  <div class="content-wrapper">
-    {% for post in posts %}
-      {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-    {% endfor %}
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      {% if posts %}
+        <header class="page-header">
+          <h1 class="page-title">
+            {{ __('Search Results for: %s', 'storefront')|format('<span>' ~ function('get_search_query') ~ '</span>') }}
+          </h1>
+        </header><!-- .page-header -->
 
-    {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
-  </div>
+        {% include 'loop.twig' with { posts: posts } only %}
+      {% else %}
+        {% include 'content/none.twig' %}
+      {% endif %}
+    </main><!-- #main -->
+  </div><!-- #primary -->
 {% endblock %}
