@@ -7,7 +7,7 @@
       {% for post in posts %}
         {{ do_action( 'storefront_page_before' ) }}
 
-        {% include ['content-page.twig'] %}
+        {% include 'content/page.twig' with { post: post } only %}
 
         {{ do_action( 'storefront_page_after' ) }}
       {% endfor %}
