@@ -1,0 +1,53 @@
+<section id="comments" class="comments-area" aria-label="{{ __( 'Post Comments', 'storefront' )|e('esc_html') }}">
+
+  {% if $have_comments %}
+    <h2 class="comments-title">
+      {{
+        _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', function('get_comments_number'), 'comments title', 'storefront' )|e('esc_html')|format(
+          function('number_format_i18n', function('get_comments_number') ),
+          '<span>' ~ function('get_the_title') ~ '</span>'
+        )
+      }}
+    </h2>
+
+    {% if $have_navigation %}
+      <nav id="comment-nav-above" class="comment-navigation" role="navigation" aria-label="{{ __( 'Comment Navigation Above', 'storefront' )|e('esc_html') }}">
+        <span class="screen-reader-text">{{ __( 'Comment navigation', 'storefront' )|e('esc_html') }}</span>
+        <div class="nav-previous">{{ function('previous_comments_link', __( '&larr; Older Comments', 'storefront' ) ) }}</div>
+        <div class="nav-next">{{ function('next_comments_link', __( 'Newer Comments &rarr;', 'storefront' ) ) }}</div>
+      </nav><!-- #comment-nav-above -->
+    {% endif %}
+
+    <ol class="comment-list">
+      {{
+        function('wp_list_comments',
+          {
+            'style'      : 'ol',
+            'short_ping' : true,
+            'callback'   : 'storefront_comment',
+          }
+        );
+      }}
+    </ol><!-- .comment-list -->
+
+    {% if $have_navigation %}
+      <nav id="comment-nav-below" class="comment-navigation" role="navigation" aria-label="{{ __( 'Comment Navigation Below', 'storefront' )|e('esc_html') }}">
+        <span class="screen-reader-text">{{ __( 'Comment navigation', 'storefront' )|e('esc_html') }}</span>
+        <div class="nav-previous">{{ function('previous_comments_link', __( '&larr; Older Comments', 'storefront' ) ) }}</div>
+        <div class="nav-next">{{ function('next_comments_link', __( 'Newer Comments &rarr;', 'storefront' ) ) }}</div>
+      </nav><!-- #comment-nav-below -->
+    {% endif %}
+
+  {% endif %}
+
+  {% if $no_comments %}
+    <p class="no-comments">{{ __( 'Comments are closed.', 'storefront' )|e('esc_html') }}</p>
+  {% endif %}
+
+  {{ function('comment_form', {
+      'title_reply_before': '<span id="reply-title" class="gamma comment-reply-title">',
+      'title_reply_after' : '</span>',
+    }|apply_filters('storefront_comment_form_args'))
+  }}
+
+</section><!-- #comments -->
