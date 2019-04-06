@@ -48,7 +48,7 @@ class Storefront extends Timber\Site {
 		add_filter( 'navigation_markup_template', array( $this, 'navigation_markup_template' ) );
 		add_action( 'enqueue_embed_scripts',      array( $this, 'print_embed_styles' ) );
 
-		add_filter( 'timber_context', array( $this, 'add_to_context' ) );
+		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
