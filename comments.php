@@ -17,7 +17,7 @@ if ( post_password_required() ) {
 	return;
 }
 
-$context = Timber::get_context();
+$context = Timber::context();
 $post = Timber::query_post();
 $context['post'] = $post;
 $context['posts'] = new Timber\PostQuery();

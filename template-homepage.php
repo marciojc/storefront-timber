@@ -11,7 +11,7 @@
  *
  * @package storefront
  */
-$context = Timber::get_context();
+$context = Timber::context();
 $post = new Timber\Post();
 $context['post'] = $post;
 Timber::render( array( 'template-homepage.twig', 'page.twig' ), $context );

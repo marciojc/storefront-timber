@@ -21,7 +21,7 @@
  * @since    Timber 0.1
  */
 
-$context = Timber::get_context();
+$context = Timber::context();
 $post = new Timber\Post();
 $context['post'] = $post;
 $context['posts'] = new Timber\PostQuery();
